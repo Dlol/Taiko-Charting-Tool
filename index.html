@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey</title>
+    <style>
+        input {
+            display: none;
+        }
+
+        img {
+            height: 3rem;
+            width: 100%;
+        }
+
+        .hit {
+            width: 100%;
+        }
+
+        .don,
+        .ka,
+        .big,
+        .tick {
+            display: grid;
+            grid-template-columns: repeat(17, 1fr);
+        }
+
+        .don p,
+        .ka p,
+        .big p,
+        .tick p {
+            text-align: right;
+        }
+
+        h1,
+        h2,
+        p {
+            font-family: sans-serif;
+        }
+
+        #out {
+            font-family: monospace;
+            font-size: 1em;
+        }
+
+        #full {
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        .sec {
+            padding: 0.5em;
+            border: 2px solid black;
+        }
+
+        #metadata {
+            display: grid;
+            grid-template-columns: 1fr 9fr;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        #metadata input {
+            display: initial;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Taiko Charting Utility</h1>
+    <p>Made by: DLOL</p>
+    <input type="file" name="" id="file" style="display: initial;">
+    <input type="submit" name="" id="load" style="display: initial;" onclick="process()">
+    <br>
+    <button onclick="down()">&larr;</button> <button onclick="up()">&rarr;</button>
+    <div id="noteEdit" class="sec">
+        <h1>Note Editor</h1>
+        <button onclick="clrt()">Clear</button>
+        <div class="tick">
+            <p>Beats:</p>
+            <img src="bigt.svg" alt="">
+            <img src="smt.svg" alt="">
+            <img src="smt.svg" alt="">
+            <img src="smt.svg" alt="">
+            <img src="bigt.svg" alt="">
+            <img src="smt.svg" alt="">
+            <img src="smt.svg" alt="">
+            <img src="smt.svg" alt="">
+            <img src="bigt.svg" alt="">
+            <img src="smt.svg" alt="">
+            <img src="smt.svg" alt="">
+            <img src="smt.svg" alt="">
+            <img src="bigt.svg" alt="">
+            <img src="smt.svg" alt="">
+            <img src="smt.svg" alt="">
+            <img src="smt.svg" alt="">
+        </div>
+        <div class="don">
+            <p>Don:</p>
+            <input type="checkbox" name="" id="1don">
+            <input type="checkbox" name="" id="2don">
+            <input type="checkbox" name="" id="3don">
+            <input type="checkbox" name="" id="4don">
+            <input type="checkbox" name="" id="5don">
+            <input type="checkbox" name="" id="6don">
+            <input type="checkbox" name="" id="7don">
+            <input type="checkbox" name="" id="8don">
+            <input type="checkbox" name="" id="9don">
+            <input type="checkbox" name="" id="10don">
+            <input type="checkbox" name="" id="11don">
+            <input type="checkbox" name="" id="12don">
+            <input type="checkbox" name="" id="13don">
+            <input type="checkbox" name="" id="14don">
+            <input type="checkbox" name="" id="15don">
+            <input type="checkbox" name="" id="16don">
+            <label for="1don" class="hit" id="dl1" onclick="check('don', 1)"><img src="grey.svg" alt=""></label>
+            <label for="2don" class="hit" id="dl2" onclick="check('don', 2)"><img src="grey.svg" alt=""></label>
+            <label for="3don" class="hit" id="dl3" onclick="check('don', 3)"><img src="grey.svg" alt=""></label>
+            <label for="4don" class="hit" id="dl4" onclick="check('don', 4)"><img src="grey.svg" alt=""></label>
+            <label for="5don" class="hit" id="dl5" onclick="check('don', 5)"><img src="grey.svg" alt=""></label>
+            <label for="6don" class="hit" id="dl6" onclick="check('don', 6)"><img src="grey.svg" alt=""></label>
+            <label for="7don" class="hit" id="dl7" onclick="check('don', 7)"><img src="grey.svg" alt=""></label>
+            <label for="8don" class="hit" id="dl8" onclick="check('don', 8)"><img src="grey.svg" alt=""></label>
+            <label for="9don" class="hit" id="dl9" onclick="check('don', 9)"><img src="grey.svg" alt=""></label>
+            <label for="10don" class="hit" id="dl10" onclick="check('don', 10)"><img src="grey.svg" alt=""></label>
+            <label for="11don" class="hit" id="dl11" onclick="check('don', 11)"><img src="grey.svg" alt=""></label>
+            <label for="12don" class="hit" id="dl12" onclick="check('don', 12)"><img src="grey.svg" alt=""></label>
+            <label for="13don" class="hit" id="dl13" onclick="check('don', 13)"><img src="grey.svg" alt=""></label>
+            <label for="14don" class="hit" id="dl14" onclick="check('don', 14)"><img src="grey.svg" alt=""></label>
+            <label for="15don" class="hit" id="dl15" onclick="check('don', 15)"><img src="grey.svg" alt=""></label>
+            <label for="16don" class="hit" id="dl16" onclick="check('don', 16)"><img src="grey.svg" alt=""></label>
+        </div>
+        <div class="ka">
+            <p>Ka:</p>
+            <input type="checkbox" name="" id="1ka">
+            <input type="checkbox" name="" id="2ka">
+            <input type="checkbox" name="" id="3ka">
+            <input type="checkbox" name="" id="4ka">
+            <input type="checkbox" name="" id="5ka">
+            <input type="checkbox" name="" id="6ka">
+            <input type="checkbox" name="" id="7ka">
+            <input type="checkbox" name="" id="8ka">
+            <input type="checkbox" name="" id="9ka">
+            <input type="checkbox" name="" id="10ka">
+            <input type="checkbox" name="" id="11ka">
+            <input type="checkbox" name="" id="12ka">
+            <input type="checkbox" name="" id="13ka">
+            <input type="checkbox" name="" id="14ka">
+            <input type="checkbox" name="" id="15ka">
+            <input type="checkbox" name="" id="16ka">
+            <label for="1ka" class="hit" id="kl1" onclick="check('ka', 1)"><img src="grey.svg" alt=""></label>
+            <label for="2ka" class="hit" id="kl2" onclick="check('ka', 2)"><img src="grey.svg" alt=""></label>
+            <label for="3ka" class="hit" id="kl3" onclick="check('ka', 3)"><img src="grey.svg" alt=""></label>
+            <label for="4ka" class="hit" id="kl4" onclick="check('ka', 4)"><img src="grey.svg" alt=""></label>
+            <label for="5ka" class="hit" id="kl5" onclick="check('ka', 5)"><img src="grey.svg" alt=""></label>
+            <label for="6ka" class="hit" id="kl6" onclick="check('ka', 6)"><img src="grey.svg" alt=""></label>
+            <label for="7ka" class="hit" id="kl7" onclick="check('ka', 7)"><img src="grey.svg" alt=""></label>
+            <label for="8ka" class="hit" id="kl8" onclick="check('ka', 8)"><img src="grey.svg" alt=""></label>
+            <label for="9ka" class="hit" id="kl9" onclick="check('ka', 9)"><img src="grey.svg" alt=""></label>
+            <label for="10ka" class="hit" id="kl10" onclick="check('ka', 10)"><img src="grey.svg" alt=""></label>
+            <label for="11ka" class="hit" id="kl11" onclick="check('ka', 11)"><img src="grey.svg" alt=""></label>
+            <label for="12ka" class="hit" id="kl12" onclick="check('ka', 12)"><img src="grey.svg" alt=""></label>
+            <label for="13ka" class="hit" id="kl13" onclick="check('ka', 13)"><img src="grey.svg" alt=""></label>
+            <label for="14ka" class="hit" id="kl14" onclick="check('ka', 14)"><img src="grey.svg" alt=""></label>
+            <label for="15ka" class="hit" id="kl15" onclick="check('ka', 15)"><img src="grey.svg" alt=""></label>
+            <label for="16ka" class="hit" id="kl16" onclick="check('ka', 16)"><img src="grey.svg" alt=""></label>
+        </div>
+        <div class="big">
+            <p>Size:</p>
+            <input type="checkbox" name="" id="1big">
+            <input type="checkbox" name="" id="2big">
+            <input type="checkbox" name="" id="3big">
+            <input type="checkbox" name="" id="4big">
+            <input type="checkbox" name="" id="5big">
+            <input type="checkbox" name="" id="6big">
+            <input type="checkbox" name="" id="7big">
+            <input type="checkbox" name="" id="8big">
+            <input type="checkbox" name="" id="9big">
+            <input type="checkbox" name="" id="10big">
+            <input type="checkbox" name="" id="11big">
+            <input type="checkbox" name="" id="12big">
+            <input type="checkbox" name="" id="13big">
+            <input type="checkbox" name="" id="14big">
+            <input type="checkbox" name="" id="15big">
+            <input type="checkbox" name="" id="16big">
+            <label for="1big" class="hit" id="bl1" onclick="check('big', 1)"><img src="Smol.svg" alt=""></label>
+            <label for="2big" class="hit" id="bl2" onclick="check('big', 2)"><img src="Smol.svg" alt=""></label>
+            <label for="3big" class="hit" id="bl3" onclick="check('big', 3)"><img src="Smol.svg" alt=""></label>
+            <label for="4big" class="hit" id="bl4" onclick="check('big', 4)"><img src="Smol.svg" alt=""></label>
+            <label for="5big" class="hit" id="bl5" onclick="check('big', 5)"><img src="Smol.svg" alt=""></label>
+            <label for="6big" class="hit" id="bl6" onclick="check('big', 6)"><img src="Smol.svg" alt=""></label>
+            <label for="7big" class="hit" id="bl7" onclick="check('big', 7)"><img src="Smol.svg" alt=""></label>
+            <label for="8big" class="hit" id="bl8" onclick="check('big', 8)"><img src="Smol.svg" alt=""></label>
+            <label for="9big" class="hit" id="bl9" onclick="check('big', 9)"><img src="Smol.svg" alt=""></label>
+            <label for="10big" class="hit" id="bl10" onclick="check('big', 10)"><img src="Smol.svg" alt=""></label>
+            <label for="11big" class="hit" id="bl11" onclick="check('big', 11)"><img src="Smol.svg" alt=""></label>
+            <label for="12big" class="hit" id="bl12" onclick="check('big', 12)"><img src="Smol.svg" alt=""></label>
+            <label for="13big" class="hit" id="bl13" onclick="check('big', 13)"><img src="Smol.svg" alt=""></label>
+            <label for="14big" class="hit" id="bl14" onclick="check('big', 14)"><img src="Smol.svg" alt=""></label>
+            <label for="15big" class="hit" id="bl15" onclick="check('big', 15)"><img src="Smol.svg" alt=""></label>
+            <label for="16big" class="hit" id="bl16" onclick="check('big', 16)"><img src="Smol.svg" alt=""></label>
+        </div>
+        <button onclick="go()">Go!</button>
+        <button onclick="add()">Add</button>
+        <button onclick="clr()">Clear out</button> <br>
+        <h2>Output</h2>
+        <span id="out"></span>
+        <h2>Full Output</h2>
+        <button onclick="dels()">Delete Selected</button>
+        <button onclick="rwd()">Edit Selected</button>
+        <button onclick="wr()">Change</button>
+        <button onclick="deselect()">Deselect</button>
+        <span id="full"></span>
+    </div>
+    <div id="metadata" class="sec hidden">
+        <h1>Metadata Editor</h1>
+        <p>.</p>
+        Title: <input type="text" name="" id="title"><br>
+        Subtitle: <input type="text" name="" id="subtitle"> <br>
+        Level: <input type="number" name="" id="level"> <br>
+        BPM: <input type="number" name="" id="bpm"> <br>
+        Song Filename (include the .ogg!): <input type="text" name="" id="wave"> <br>
+        Offset: <input type="number" name="" id="offset"> <br>
+        Genre: <input type="text" name="" id="genre"> <br>
+        Difficulty: <input type="text" name="" id="course"> <br>
+        <button type="submit" onclick="submit()">Submit</button>
+        <h2>Output</h2>
+        <span id="metaput"></span>
+    </div>
+    <!-- Note Editor JS -->
+    <script>
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            // Great success! All the File APIs are supported.
+        } else {
+            alert('The File APIs are not fully supported in this browser.');
+        }
+        var out = "0000000000000000,"
+        var full = []
+        String.prototype.replaceAt = function (index, replacement) {
+            return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+        }
+        var ex;
+
+        function check(type, id) {
+            setTimeout(function () {
+                if (type != "big") {
+                    if (document.getElementById(id + type).checked) {
+                        ex = document.getElementById(type[0] + "l" + id).children[0]
+
+                        ex.setAttribute("src", type + ".svg")
+                    } else {
+                        ex = document.getElementById(type[0] + "l" + id).children[0]
+
+                        ex.setAttribute("src", "grey.svg")
+                    }
+                } else {
+                    if (document.getElementById(id + type).checked) {
+                        ex = document.getElementById(type[0] + "l" + id).children[0]
+
+                        ex.setAttribute("src", type + ".svg")
+                    } else {
+                        ex = document.getElementById(type[0] + "l" + id).children[0]
+
+                        ex.setAttribute("src", "smol.svg")
+                    }
+                }
+                go()
+            }, 10)
+        }
+        ["don", "ka", "big"].forEach(element => {
+            for (let x = 1; x < 17; x++) {
+                check(element, x)
+            }
+        });
+
+        function go() {
+            for (let x = 1; x < 17; x++) {
+                if (document.getElementById(x + "don").checked) {
+                    if (document.getElementById(x + "big").checked) {
+                        out = out.replaceAt(x - 1, "3")
+                    } else {
+                        out = out.replaceAt(x - 1, "1")
+                    }
+
+                    // console.log("1")
+                } else if (document.getElementById(x + "ka").checked) {
+                    if (document.getElementById(x + "big").checked) {
+                        out = out.replaceAt(x - 1, "4")
+                    } else {
+                        out = out.replaceAt(x - 1, "2")
+                    }
+
+                } else {
+                    out = out.replaceAt(x - 1, "0")
+                    // console.log("0")
+                }
+                document.getElementById("out").innerText = out
+            }
+        }
+        go()
+
+        function add() {
+            go()
+            full.push(out);
+            let fullT = "";
+            full.forEach(function (element, index) {
+                fullT += ("<br> <input type='radio' name='sel' value='" + index +
+                    "' style='display:initial' id='arr" + index + "'>" +
+                    element)
+            })
+            document.getElementById("full").innerHTML = fullT
+        }
+
+        function clr() {
+            full = [];
+            document.getElementById("full").innerText = full
+        }
+
+        function clrt() {
+            ["don", "ka", "big"].forEach(element => {
+                for (let x = 1; x < 17; x++) {
+                    document.getElementById(x + element).checked = false;
+                    check(element, x)
+                }
+                go()
+            });
+        }
+
+        function process() {
+            var file = document.getElementById("file").files[0]
+            if (file) {
+                var read = new FileReader();
+                read.readAsText(file);
+                read.onload = function (e) {
+                    var res = e.target.result
+                    var result = res.slice(res.indexOf("#START") + 6, res.indexOf("#END"))
+                    var arrResult = result.replace(/\s/ig, "").split(",")
+                    console.info(result)
+                    console.info(arrResult)
+                    full = arrResult
+                    let fullT = "";
+                    full.forEach(function (element, index) {
+                        fullT += ("<br> <input type='radio' name='sel' value='" + index +
+                            "' style='display:initial' id='arr" + index + "'>" +
+                            element)
+                    })
+                    document.getElementById("full").innerHTML = fullT
+                }
+            }
+            console.log()
+        }
+
+        function dels() {
+
+            full.splice(document.querySelector('input[name="sel"]:checked').value, 1)
+            let fullT = "";
+            full.forEach(function (element, index) {
+                fullT += ("<br> <input type='radio' name='sel' value='" + index +
+                    "' style='display:initial' id='arr" + index + "'>" +
+                    element)
+            })
+            document.getElementById("full").innerHTML = fullT
+        }
+
+        function rwd() {
+            let current = full[document.querySelector('input[name="sel"]:checked').value]
+            console.log(current)
+            let ara = current.split("")
+            console.log(ara)
+            clrt()
+            for (let index = 0; index < ara.length; index++) {
+                let element = ara[index];
+                if (element == 3 || element == 4) {
+                    document.getElementById((index + 1) + "big").checked = true
+                }
+                if (element == 1 || element == 3) {
+                    document.getElementById((index + 1) + "don").checked = true
+                }
+                if (element == 2 || element == 4) {
+                    document.getElementById((index + 1) + "ka").checked = true
+                }
+            }
+        }
+
+        function wr() {
+            go()
+            full.splice(document.querySelector('input[name="sel"]:checked').value, 1, out);
+            let fullT = "";
+            full.forEach(function (element, index) {
+                fullT += ("<br> <input type='radio' name='sel' value='" + index +
+                    "' style='display:initial' id='arr" + index + "'>" +
+                    element)
+            })
+            document.getElementById("full").innerHTML = fullT
+        }
+
+        function deselect() {
+            document.querySelector('input[name="sel"]:checked').checked = false
+        }
+    </script>
+    <!-- Metadata -->
+    <script>
+        var categories = ["title", "subtitle", "level", "bpm", "wave", "offset", "genre", "course"];
+
+        function submit() {
+            let out = "";
+            let vals = [];
+            categories.forEach(function (element) {
+                vals.push(document.getElementById(element).value)
+            })
+            vals.forEach(function (element, index) {
+                out = out + (categories[index].toUpperCase() + ": ") + element + "\n"
+            })
+            out +=
+                "SONGVOL:100\nSEVOL:100\nDEMOSTART:\nBALLOON:\nSCOREINIT:\nSCOREDIFF:\nSTYLE:Single\nSIDE:Normal\nSCOREMODE:1\n"
+            document.getElementById("metaput").innerText = out
+        }
+    </script>
+    <!-- Switcher -->
+    <script>
+        var choices = ["noteEdit", "metadata"]
+        var choice = 0;
+
+        function setShow(index) {
+            choices.forEach(function (element) {
+                document.getElementById(element).classList.toggle("hidden", true)
+            })
+            document.getElementById(choices[index]).classList.toggle("hidden", false)
+        }
+        setShow(choice)
+
+        function up() {
+            if (choice == choices.length - 1) {
+                console.info("reset")
+                choice = 0
+            } else {
+                console.info("up")
+                choice++
+            }
+            setShow(choice)
+        }
+
+        function down() {
+            if (choice == 0) {
+                console.info("reset")
+                choice = choices.length - 1
+            } else {
+                console.info("down")
+                choice--
+            }
+            setShow(choice)
+        }
+    </script>
+</body>
+
+</html>
